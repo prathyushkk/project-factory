@@ -1,5 +1,5 @@
 output "domain_example" {
-  value       = module.project-factory.domain
+  value       = module.data.domain
   description = "The organization's domain"
 }
 

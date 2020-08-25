@@ -37,22 +37,28 @@ resource "google_folder" "prod" {
   parent       = "organizations/${var.organization_id}"
 }
 
-module "project-prod-gke" {
-  source            = "../../modules/gsuite_enabled"
-  random_project_id = true
-  name              = "hierarchy-sample-prod-gke"
+module "etl" {
+  source  = "terraform-google-modules/project-factory/google"
+  version = "9.0.0"
   org_id            = var.organization_id
+  random_project_id = true
+  name              = "etl"
+  auto_create_network = false
   billing_account   = var.billing_account
   folder_id         = google_folder.prod.id
   credentials_path  = local.credentials_file_path
+  default_service_account = keep
 }
 
-module "project-factory" {
-  source            = "../../modules/gsuite_enabled"
-  random_project_id = true
-  name              = "hierarchy-sample-factory"
+module "api" {
+  source  = "terraform-google-modules/project-factory/google"
+  version = "9.0.0"
   org_id            = var.organization_id
+  random_project_id = true
+  name              = "api"
+  auto_create_network = false
   billing_account   = var.billing_account
   folder_id         = google_folder.prod.id
   credentials_path  = local.credentials_file_path
+  default_service_account = keep
 }
