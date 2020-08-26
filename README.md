@@ -14,6 +14,5 @@ TF_VARS_billing_account
 
 TF_VARS_credentials_path
 
-TF_VARS_terraform_workspace
 
 This terraform is intended to run on a platform which has credentials for the organization.
