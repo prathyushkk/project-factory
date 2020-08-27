@@ -4,6 +4,8 @@ This project factory builds multiple google projects under a google folder.
 
 # Requirements
 
+The project factory requires terraform command line and a workspace to execute. This can be a CI tool like Jenkins which has credentials for the organization.
+
 Define the following Environment Variables
 
 TF_VARS_admin_email
